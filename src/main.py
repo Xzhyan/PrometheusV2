@@ -1,6 +1,7 @@
 
 # ui
 from ui.ui_console import alert
+from ui.banners import Banners
 
 # utils
 from utils.console import entry, shutdown, clear
@@ -12,6 +13,8 @@ class Main:
 
     def startup(self):
         clear()
+
+        print(Banners.TOOL_LOGO)
 
         self.dispatch()
 
