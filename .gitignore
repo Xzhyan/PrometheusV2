@@ -1,3 +1,16 @@
+# =======================
+# IGNORES DO PROJETO
+# =======================
+
+
+
+
+
+# ========================
+# IGNORES DO PYTHONa
+# ========================
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
