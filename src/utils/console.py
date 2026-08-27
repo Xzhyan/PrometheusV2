@@ -1,10 +1,17 @@
 import subprocess, sys
 
+# core
+from core import settings, Colors
+
+# utils
+from .functions import run_py_module
+
 
 def entry():
     """Recebe entradas do usuário e retorna em argumentos separados"""
 
-    entries = input(" > ")
+    print(f"\n {Colors.FG_ONE}┌─({Colors.TEXT_TWO}{settings.TOOL_NAME}{Colors.FG_ONE})-[{Colors.FG_ONE}]")
+    entries = input(f" {Colors.FG_ONE}└───[> {Colors.TEXT_TWO}")
 
     if not entries:
         raise ValueError("Você precisa informar um comando válido")
@@ -37,4 +44,10 @@ def shutdown():
 def restart():
     """Reinicia a ferramenta"""
 
-    pass
+    run_py_module(r'src\main.py')
+
+
+def set_title(title):
+    """Define um titulo ao prompt"""
+
+    shell_cmd(f'title {title}')

@@ -1,10 +1,17 @@
 
+# core
+from core import settings
+from core.exceptions import CommandNotFound
+
 # ui
 from ui.ui_console import alert
 from ui.banners import Banners
 
 # utils
-from utils.console import entry, shutdown, clear
+from utils.console import entry, shutdown, clear, set_title
+
+# commands
+from cmds.defaults import DEFAULT_COMMANDS
 
 
 class Main:
@@ -13,7 +20,7 @@ class Main:
 
     def startup(self):
         clear()
-
+        set_title(settings.TOOL_NAME)
         print(Banners.TOOL_LOGO)
 
         self.dispatch()
@@ -24,6 +31,16 @@ class Main:
         while self.running:
             try:
                 entries = entry()
+                command = entries[0] # primeiro arg é o comando
+
+                if command in DEFAULT_COMMANDS:
+                    DEFAULT_COMMANDS[command]['handler']()
+
+                else:
+                    raise CommandNotFound(command)
+
+            except CommandNotFound as e:
+                alert('error', str(e))
 
             except ValueError as e:
                 alert('error', str(e))
