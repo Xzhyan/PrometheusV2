@@ -11,12 +11,13 @@ from ui.banners import Banners
 from utils.console import entry, shutdown, clear, set_title
 
 # commands
-from cmds.defaults import DEFAULT_COMMANDS
+from cmds import Help, DEFAULT_COMMANDS
 
 
 class Main:
     def __init__(self):
-        self.running = True
+        self.running = True # controle de execução do loop principal
+        self.help = Help() # Menu de ajuda
 
     def startup(self):
         clear()
@@ -33,7 +34,10 @@ class Main:
                 entries = entry()
                 command = entries[0] # primeiro arg é o comando
 
-                if command in DEFAULT_COMMANDS:
+                if command == 'help':
+                    self.help.show_help()
+
+                elif command in DEFAULT_COMMANDS:
                     DEFAULT_COMMANDS[command]['handler']()
 
                 else:
