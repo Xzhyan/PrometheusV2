@@ -14,8 +14,8 @@ DATA_DIR = BASE_DIR / 'data'
 # Caminho dos logs
 LOG_DIR = BASE_DIR / 'logs'
 
-
-TEST_DIR = BASE_DIR / 'tests'
+# Arquivo de atalhos
+SHORT_JSON = DATA_DIR / 'shorts.json'
 
 
 class Colors:
