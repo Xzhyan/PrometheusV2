@@ -8,6 +8,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Caminho do .env file
 ENV_FILE = BASE_DIR / '.env'
 
+# Caminho do diretório de dados
+DATA_DIR = BASE_DIR / 'data'
+
+# Caminho dos logs
+LOG_DIR = BASE_DIR / 'logs'
+
+
+TEST_DIR = BASE_DIR / 'tests'
+
 
 class Colors:
     """Definição de cores da ferramenta"""
@@ -40,7 +49,7 @@ class Settings(BaseSettings):
 
 
     model_config = SettingsConfigDict(
-        env_file='.env'
+        env_file=ENV_FILE
     )
 
 settings = Settings()

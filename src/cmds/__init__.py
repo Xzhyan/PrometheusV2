@@ -14,13 +14,9 @@ def list_commands(name, cmd_list):
         print(f"{Colors.SUCCESS}{cmd}{Colors.TEXT_TWO}: {data['desc']}")
 
 
-class Help:
-    def __init__(self):
-        pass
+def show_help():
+    """Menu de ajuda da ferramenta"""
 
-    def show_help(self):
-        """Menu de ajuda da ferramenta"""
-
-        list_commands("Comandos Normais", DEFAULT_COMMANDS)
+    list_commands("Comandos Normais", DEFAULT_COMMANDS)
 
 

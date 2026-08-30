@@ -1,7 +1,8 @@
 
 # core
 from core import settings
-from core.exceptions import CommandNotFound
+from core.dependencies import check_dependencies
+from core.exceptions import CommandNotFoundError
 
 # ui
 from ui.ui_console import alert
@@ -11,20 +12,22 @@ from ui.banners import Banners
 from utils.console import entry, shutdown, clear, set_title
 
 # commands
-from cmds import Help, DEFAULT_COMMANDS
+from cmds import show_help, DEFAULT_COMMANDS
 
 
 class Main:
     def __init__(self):
         self.running = True # controle de execução do loop principal
-        self.help = Help() # Menu de ajuda
 
     def startup(self):
-        clear()
-        set_title(settings.TOOL_NAME)
-        print(Banners.TOOL_LOGO)
+        if check_dependencies(): # Só abre a ferramenta dps da verificação
+            clear()
+            set_title(settings.TOOL_NAME)
+            print(Banners.TOOL_LOGO)
+            self.dispatch()
 
-        self.dispatch()
+        else:
+            shutdown
 
     def dispatch(self):
         """Trata os comandos da ferramenta"""
@@ -35,15 +38,15 @@ class Main:
                 command = entries[0] # primeiro arg é o comando
 
                 if command == 'help':
-                    self.help.show_help()
+                    show_help()
 
                 elif command in DEFAULT_COMMANDS:
                     DEFAULT_COMMANDS[command]['handler']()
 
                 else:
-                    raise CommandNotFound(command)
+                    raise CommandNotFoundError(command)
 
-            except CommandNotFound as e:
+            except CommandNotFoundError as e:
                 alert('error', str(e))
 
             except ValueError as e:
