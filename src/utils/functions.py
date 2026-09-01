@@ -1,4 +1,4 @@
-import os, subprocess, time
+import subprocess, time, json
 from pathlib import Path
 
 # core
@@ -21,23 +21,20 @@ def run_py_module(path: Path, new_window: bool = False):
     if new_window:
         subprocess.Popen([venv, script], creationflags=subprocess.CREATE_NEW_CONSOLE)
 
-    subprocess.run([venv, script], check=True)
+    else:
+        subprocess.run([venv, script], check=True)
 
 
 def create_folder(folder_path: Path):
     """Cria a pasta conforme o path especificado"""
 
-    try:
-        alert('info', f"criando: {folder_path}")
+    alert('info', f"criando: {folder_path}")
 
-        time.sleep(0.5)
-        os.mkdir(folder_path)
-        time.sleep(0.5)
+    time.sleep(0.5)
+    folder_path.mkdir(parents=True, exist_ok=True)
+    time.sleep(0.5)
 
-        alert('success', f"{folder_path}: criado!")
-
-    except Exception as e:
-        alert('error', str(e))
+    alert('success', f"{folder_path}: criado!")
 
 
 def check_file(file_path: Path) -> bool:
@@ -45,7 +42,7 @@ def check_file(file_path: Path) -> bool:
 
     alert('info', f"verificando: {file_path}")
 
-    if not os.path.isfile(file_path):
+    if not file_path.is_file():
         raise FileNotFoundError(f"{file_path}: arquivo não encontrado")
 
     time.sleep(0.5)
@@ -60,7 +57,7 @@ def check_folder(folder_path: Path, create: bool = False) -> bool:
 
     alert('info', f"verificando: {folder_path}")
 
-    if not os.path.isdir(folder_path):
+    if not folder_path.is_dir():
         if create:
             create_folder(folder_path)
 
@@ -72,3 +69,19 @@ def check_folder(folder_path: Path, create: bool = False) -> bool:
     time.sleep(0.5)
 
     return True
+
+
+def read_json(path: Path) -> dict:
+    """Lê um arquivo json"""
+
+    with open(path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+
+    return data
+
+
+def write_json(path: Path, data: dict):
+    """Escreve dados no arquivo json"""
+
+    with open(path, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
