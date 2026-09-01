@@ -2,7 +2,7 @@
 # core
 from core import settings
 from core.dependencies import check_dependencies
-from core.exceptions import CommandNotFoundError
+from core.exceptions import CommandNotFoundError, MissingArgumentError
 
 # ui
 from ui.ui_console import alert
@@ -17,7 +17,7 @@ from cmds import show_help, DEFAULT_COMMANDS
 
 class Main:
     def __init__(self):
-        self.running = True # controle de execução do loop principal
+        self.running: bool = True # controle de execução do loop principal
 
     def startup(self):
         if check_dependencies(): # Só abre a ferramenta dps da verificação
@@ -27,7 +27,7 @@ class Main:
             self.dispatch()
 
         else:
-            shutdown
+            shutdown()
 
     def dispatch(self):
         """Trata os comandos da ferramenta"""
@@ -41,12 +41,15 @@ class Main:
                     show_help()
 
                 elif command in DEFAULT_COMMANDS:
-                    DEFAULT_COMMANDS[command]['handler']()
+                    DEFAULT_COMMANDS[command]['handler'](entries)
 
                 else:
                     raise CommandNotFoundError(command)
 
             except CommandNotFoundError as e:
+                alert('error', str(e))
+
+            except MissingArgumentError as e:
                 alert('error', str(e))
 
             except ValueError as e:

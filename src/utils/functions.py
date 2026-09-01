@@ -1,4 +1,5 @@
 import os, subprocess, time
+from pathlib import Path
 
 # core
 from core.config import BASE_DIR
@@ -8,7 +9,7 @@ from core.exceptions import FolderNotFoundError
 from ui.ui_console import alert
 
 
-def run_py_module(path, new_window=False):
+def run_py_module(path: Path, new_window: bool = False):
     """
     Executa um scrip/modulo python separadamente
     Apenas scripts dentro do mesmo BASE_DIR
@@ -23,7 +24,7 @@ def run_py_module(path, new_window=False):
     subprocess.run([venv, script], check=True)
 
 
-def create_folder(folder_path):
+def create_folder(folder_path: Path):
     """Cria a pasta conforme o path especificado"""
 
     try:
@@ -39,7 +40,7 @@ def create_folder(folder_path):
         alert('error', str(e))
 
 
-def check_file(file_path):
+def check_file(file_path: Path) -> bool:
     """Verifica existência do arquivo especificado"""
 
     alert('info', f"verificando: {file_path}")
@@ -54,7 +55,7 @@ def check_file(file_path):
     return True
 
 
-def check_folder(folder_path, create=False):
+def check_folder(folder_path: Path, create: bool = False) -> bool:
     """Verifica existência da pasta especificada"""
 
     alert('info', f"verificando: {folder_path}")
@@ -71,4 +72,3 @@ def check_folder(folder_path, create=False):
     time.sleep(0.5)
 
     return True
-

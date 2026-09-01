@@ -1,17 +1,16 @@
+from pathlib import Path
+
+# core
+from core.config import SHORT_JSON
+from core.exceptions import MissingArgumentError
+
 # utils
 from utils.console import shutdown, restart, clear
 
 
-
 class Short:
-    def __init__(self, args):
+    def __init__(self, entries: list[str]):
         pass
-
-    def add(self):
-        """Adiciona um atalho"""
-
-        pass
-
 
 
 DEFAULT_COMMANDS = {
@@ -29,6 +28,6 @@ DEFAULT_COMMANDS = {
     },
     'short': {
         'desc': "atalhos personalizados",
-        'handler': lambda args: Short(args)
+        'handler': lambda entries: Short(entries)
     }
 }

@@ -3,7 +3,7 @@
 from core import Colors
 
 
-def alert(type_, text, br_line = None):
+def alert(type_: str, text: str, br_line: bool = False):
     """Exibe alertas padronizados no CLI"""
 
     type_ = type_.lower() # normaliza pra evitar problemas

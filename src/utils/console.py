@@ -7,7 +7,7 @@ from core import settings, Colors
 from .functions import run_py_module
 
 
-def entry():
+def entry() -> list[str]:
     """Recebe entradas do usuário e retorna em argumentos separados"""
 
     print(f"\n {Colors.FG_ONE}┌─({Colors.TEXT_TWO}{settings.TOOL_NAME}{Colors.FG_ONE})-[{Colors.FG_ONE}]")
@@ -19,7 +19,7 @@ def entry():
     return entries.split()
 
 
-def shell_cmd(cmd):
+def shell_cmd(cmd: str):
     """Usa o subprocess para executar comandos simples no cmd"""
 
     try:
@@ -29,21 +29,22 @@ def shell_cmd(cmd):
         print(str(e))
 
 
-def clear():
+def clear(*args):
     """Limpa a tela CLI da ferramenta"""
 
     shell_cmd('cls')
 
 
-def shutdown():
+def shutdown(*args):
     """Fecha a ferramenta"""
 
     sys.exit(0)
 
 
-def restart():
+def restart(*args):
     """Reinicia a ferramenta"""
 
+    clear()
     run_py_module(r'src\main.py')
 
 
