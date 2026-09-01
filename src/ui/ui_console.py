@@ -1,25 +1,42 @@
+from typing import Literal
+from colorama import Fore as fg
 
-# core
-from core import Colors
 
 
-def alert(type_: str, text: str, br_line: bool = False):
-    """Exibe alertas padronizados no CLI"""
+class Colors:
+    """Esquema de cores da ferramenta"""
 
-    type_ = type_.lower() # normaliza pra evitar problemas
+    # Alertas
+    SUCCESS = fg.GREEN
+    ERROR = fg.RED
+    WARNING = fg.YELLOW
+    INFO = fg.BLUE
 
-    alert_types = {
-        'info': Colors.INFO,
+    # UI
+    FG_ONE = fg.RED
+    FG_TWO = fg.WHITE
+
+    # Texto
+    TEXT_ONE = fg.RED
+    TEXT_TWO = fg.WHITE
+
+
+def alert(
+    type_: Literal['success', 'error', 'warning', 'info'],
+    text: str
+):
+    """Alerta padronizado"""
+
+    type_ = type_.lower()
+
+    types = {
         'success': Colors.SUCCESS,
         'error': Colors.ERROR,
-        'warning': Colors.WARNING
+        'warning': Colors.WARNING,
+        'info': Colors.INFO
     }
 
-    FG_ALERT = alert_types.get(type_, Colors.INFO)
+    FG_ALERT = types.get(type_, Colors.INFO)
 
-    # Usa um print para simular uma quebra de linha do CLI
-    if br_line:
-        print()
-
-    print(f"{FG_ALERT}[> {type_.upper()} <] {Colors.TEXT_TWO}{text}")
+    print(f"\n{FG_ALERT}[{type_.upper()}] {Colors.TEXT_TWO}{text}")
 

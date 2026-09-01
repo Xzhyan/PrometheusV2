@@ -1,1 +1,4 @@
-from .config import settings, Colors
+from .config import (
+    settings,
+    BASE_DIR
+)
