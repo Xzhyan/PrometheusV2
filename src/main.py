@@ -1,13 +1,16 @@
 
 # core
 from core import settings
-from core.exceptions import MissingArgumentsError
+from core.exceptions import MissingArgumentsError, CommandNotFoundError
 
 # utils
-from utils.system import entry, clear, set_title, shutdown
+from utils.system import entry, set_title
 
 # ui
-from ui.ui_console import alert
+from ui.ui_console import alert, Banners
+
+# commands
+from commands.general import shutdown, clear, DEFAULT_COMMANDS
 
 
 class Prometheus:
@@ -19,7 +22,9 @@ class Prometheus:
 
         clear()
         set_title(title=settings.TOOL_NAME)
- 
+        print(Banners.TOOL_LOGO)
+
+
         self.dispatch()
 
     def dispatch(self):
@@ -28,7 +33,16 @@ class Prometheus:
         while self.running:
             try:
                 args = entry()
+                cmd = args[0]
 
+                if cmd in DEFAULT_COMMANDS:
+                    DEFAULT_COMMANDS[cmd]['handler']()
+
+                else:
+                    raise CommandNotFoundError(command=cmd)
+
+            except CommandNotFoundError as e:
+                alert('error', str(e))
 
             except MissingArgumentsError as e:
                 alert('error', str(e))

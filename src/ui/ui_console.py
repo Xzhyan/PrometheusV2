@@ -1,6 +1,9 @@
 from typing import Literal
 from colorama import Fore as fg
 
+# core
+from core import settings
+
 
 class Colors:
     """Esquema de cores da ferramenta"""
@@ -39,3 +42,10 @@ def alert(
 
     print(f"\n{FG_ALERT}[{type_.upper()}] {Colors.TEXT_TWO}{text}")
 
+
+class Banners:
+    TOOL_LOGO = f"""{Colors.FG_ONE}
+                            ┏┓┳┓┏┓┳┳┓┏┓┏┳┓┓┏┏┓┳┳┏┓
+                            ┃┃┣┫┃┃┃┃┃┣  ┃ ┣┫┣ ┃┃┗┓
+                            ┣┛┛┗┗┛┛ ┗┗┛ ┻ ┛┗┗┛┗┛┗┛
+                       Developed by {Colors.FG_TWO}{settings.AUTHOR} {Colors.FG_ONE}- ver. {Colors.FG_TWO}{settings.VERSION}"""
