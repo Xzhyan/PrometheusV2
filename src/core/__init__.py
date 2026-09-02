@@ -1,4 +1,2 @@
-from .config import (
-    settings,
-    BASE_DIR
-)
+from .config import settings
+from .constants import BASE_DIR

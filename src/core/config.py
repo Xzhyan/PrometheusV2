@@ -1,9 +1,5 @@
 from pydantic_settings import BaseSettings
-from pathlib import Path
 
-
-# Caminho absoluto
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 class Settings(BaseSettings):

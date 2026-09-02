@@ -2,7 +2,6 @@ from typing import Literal
 from colorama import Fore as fg
 
 
-
 class Colors:
     """Esquema de cores da ferramenta"""
 

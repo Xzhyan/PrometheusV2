@@ -1,7 +1,11 @@
 import subprocess, sys
 
 # core
+from core import settings
 from core.exceptions import MissingArgumentsError
+
+# ui
+from ui.ui_console import Colors
 
 
 
@@ -26,8 +30,8 @@ def clear():
 def entry() -> list[str]:
     """Recebe entradas do usuário no CLI"""
 
-    print()
-    entries = input(" > ")
+    print(f"\n {Colors.FG_ONE}┌─({Colors.FG_TWO}{settings.TOOL_NAME.lower()}{Colors.FG_ONE})─[]")
+    entries = input(f" {Colors.FG_ONE}└───[ {Colors.FG_TWO}")
 
     if not entries:
         raise MissingArgumentsError("Nenhuma entrada foi informada")
