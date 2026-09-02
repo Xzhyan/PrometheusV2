@@ -3,7 +3,7 @@
 from utils.system import shutdown, clear
 
 
-def list_commands(name, cmds):
+def list_commands(name: str, cmds: dict):
     """Exibe de forma organizada os comandos passados no [cmds]"""
 
     print()
@@ -11,7 +11,7 @@ def list_commands(name, cmds):
         print(f"{cmd}: {data['desc']}")
 
 
-def help(*args) -> str:
+def help(*args):
     """Exibe o menu de ajuda e lista de comandos"""
 
     print("\nBem-vindo ao menu de ajuda da ferramenta")

@@ -1,6 +1,7 @@
 
 # core
 from core import settings
+from core.dependencies import check_dependencies
 from core.exceptions import MissingArgumentsError, CommandNotFoundError
 
 # utils
@@ -24,6 +25,8 @@ class Prometheus:
         set_title(title=settings.TOOL_NAME)
         print(Banners.TOOL_LOGO)
 
+        if not check_dependencies():
+            raise KeyboardInterrupt
 
         self.dispatch()
 

@@ -2,6 +2,8 @@
 # IGNORES DO PROJETO
 # ========================
 
+# Diretório de dados
+data/
 
 # ========================
 # IGNORES DO PYTHON
