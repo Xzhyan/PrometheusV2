@@ -23,6 +23,15 @@ class Colors:
     TEXT_TWO = fg.WHITE
 
 
+
+def list_commands(name: str, cmds: dict):
+    """Exibe de forma organizada os comandos passados no [cmds]"""
+
+    print()
+    for cmd, data in cmds.items():
+        print(f"{Colors.SUCCESS}{cmd}{Colors.TEXT_TWO}: {data['desc']}")
+
+
 def alert(
     type_: Literal['success', 'error', 'warning', 'info'],
     text: str

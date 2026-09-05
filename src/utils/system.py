@@ -22,7 +22,7 @@ def set_title(title: str):
     shell_cmd(command=f"title {title}")
 
 
-def clear():
+def clear(*args):
     """Limpa a tela da ferramenta"""
 
     shell_cmd(command="cls")

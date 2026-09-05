@@ -39,7 +39,7 @@ class Prometheus:
                 cmd = args[0]
 
                 if cmd in DEFAULT_COMMANDS:
-                    DEFAULT_COMMANDS[cmd]['handler']()
+                    DEFAULT_COMMANDS[cmd]['handler'](args)
 
                 else:
                     raise CommandNotFoundError(command=cmd)
@@ -49,10 +49,6 @@ class Prometheus:
 
             except MissingArgumentsError as e:
                 alert('error', str(e))
-
-            except Exception as e:
-                alert('error', str(e))
-
 
 
 if __name__ == '__main__':
