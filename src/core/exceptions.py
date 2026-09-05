@@ -12,3 +12,4 @@ class MissingArgumentsError(Exception):
 class PathNotFoundError(Exception):
     def __init__(self, path):
         super().__init__(f"{path}: não existe, verifique o caminho e não esqueça que deve ser o caminho absoluto")
+

@@ -55,36 +55,49 @@ class CustomShort:
         print("ok")
 
     def save(self):
+        data = self.list_()
         types = ['app', 'dir']
 
-        type_ = input("\n > informe o tipo de atalho [app/dir]: ")
+        try:
+            type_ = input("\n > informe o tipo de atalho [app/dir]: ")
 
-        if not type_ in types:
-            alert('info', "precisa ser do tipo 'app' ou 'dir'")
-            self.save()
+            if not type_ in types:
+                alert('info', "precisa ser do tipo 'app' ou 'dir'")
+                self.save()
 
-        name = input(" > nome ou apelido para o atalho: ")
+            name = input(" > nome ou apelido para o atalho: ")
 
-        if not name:
-            alert('info', "um nome deve ser informado")
-            self.save()
+            if not name:
+                alert('info', "um nome deve ser informado")
+                self.save()
 
-        path: Path = Path(input(" > caminho do atalho: "))
+            if name in data[type_]:
+                alert('info', f"{name}: já existe nos atalhos")
+                self.save()
 
-        if not path:
-            alert('info', "um caminho deve ser informado")
-            self.save()
+            path: Path = Path(input(" > caminho do atalho: "))
 
-        data = self.list_()
+            if not path:
+                alert('info', "um caminho deve ser informado")
+                self.save()
 
-        for t, data in data.items():
-            if not name in data['name']:
-                print('ok')
+            data[type_][name] = {
+                'path': str(path)
+            }
+
+            write_json(JSON_FILE, data)
+
+            alert('success', f"{name}: foi adicionado com sucesso")
+
+        except KeyboardInterrupt:
+            print()
+            alert('info', "comando de atalhos finalizado")
+
 
     def manage(self, cmd):
         """Controla os sub comandos do comando de atalhos"""
 
-        CMDS = {
+        SHORT_COMMANDS = {
             'add': {
                 'desc': "adicionar um novo atalho",
                 'handler': self.save
@@ -99,8 +112,8 @@ class CustomShort:
             }
         }
 
-        if cmd in CMDS:
-            CMDS[cmd]['handler']()
+        if cmd in SHORT_COMMANDS:
+            SHORT_COMMANDS[cmd]['handler']()
 
         else:
             raise CommandNotFoundError(command=f"short -> {cmd}")
