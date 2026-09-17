@@ -1,48 +1,34 @@
 
-# core
-from core import settings
-from core.exceptions import MissingArgumentsError
-
 # utils
-from utils.system import entry, clear, set_title, shutdown
+from utils.system import clear, entry
 
 # ui
-from ui.ui_console import alert
+from ui.ui_console import Banners, alert
 
 
-class Prometheus:
+class Main:
     def __init__(self):
-        self.running: bool = True # controle do loop principal
+        self.running: bool = True
 
     def startup(self):
-        """Definições iniciais"""
-
         clear()
-        set_title(title=settings.TOOL_NAME)
- 
+        print(Banners.TOOL_LOGO)
+
         self.dispatch()
 
     def dispatch(self):
-        """Tratamento dos comandos da ferramenta"""
-
         while self.running:
             try:
-                args = entry()
-
-
-            except MissingArgumentsError as e:
-                alert('error', str(e))
+                entries = entry()
 
             except Exception as e:
-                alert('error', str(e))
-
+                print(str(e))
 
 
 if __name__ == '__main__':
     try:
-        tool = Prometheus()
+        tool = Main()
         tool.startup()
 
     except KeyboardInterrupt:
         alert('info', "Finalizando...")
-        shutdown()

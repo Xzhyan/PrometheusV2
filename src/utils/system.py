@@ -1,42 +1,27 @@
-import subprocess, sys
+import subprocess
 
-# core
-from core.exceptions import MissingArgumentsError
+# ui
+from ui.ui_console import Colors
 
 
-
-def shell_cmd(command: str):
-    """Usa o subprocess para executar comandos do terminal"""
+def shell_cmd(command):
+    """Executa comandos do terminal"""
 
     subprocess.run(command, shell=True)
-
-
-def set_title(title: str):
-    """Define o titulo do terminal"""
-
-    shell_cmd(command=f"title {title}")
 
 
 def clear():
     """Limpa a tela da ferramenta"""
 
-    shell_cmd(command="cls")
+    shell_cmd("cls")
 
 
-def entry() -> list[str]:
-    """Recebe entradas do usuário no CLI"""
+def entry():
+    """Recebe as entradas da ferramenta"""
 
-    print()
     entries = input(" > ")
+    normalized = entries.lower()
 
-    if not entries:
-        raise MissingArgumentsError("Nenhuma entrada foi informada")
+    return normalized.split()
 
-    return entries.split()
-
-
-def shutdown():
-    """Finaliza a ferramenta"""
-
-    sys.exit()
 
