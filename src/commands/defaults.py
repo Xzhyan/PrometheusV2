@@ -1,7 +1,7 @@
 
 
 # utils
-from utils.system import shutdown, clear, list_commands
+from utils.system import shutdown, clear, restart, list_commands
 
 
 def show_default_cmds():
@@ -19,10 +19,50 @@ CATEGORIES: dict = {
 }
 
 
-def help_menu():
+def help_menu(*args):
     """Exibe o menu de ajuda e comandos da ferramenta"""
 
     list_commands("Categorias de Comandos", CATEGORIES)
+
+
+class Short:
+    def __init__(self):
+        self.SHORT_CMDS: dict = {
+            'add': {
+                'desc': "adiciona um atalho",
+                'handler': self.add
+            },
+            'list': {
+                'desc': "lista todos os atalhos",
+                'handler': self.list
+            },
+            'remove': {
+                'desc': "remove um atalho",
+                'handler': self.remove
+            },
+        }
+
+    def add(self):
+        print("test")
+
+    def list(self):
+        pass
+
+    def remove(self):
+        pass
+
+    def dispatch(self, args):
+        if len(args) <= 1:
+            raise ValueError("esse comando utiliza mais argumentos: add/list/remove")
+
+        arg = args[1]
+
+        if arg in self.SHORT_CMDS:
+            self.SHORT_CMDS[arg]['handler']()
+
+        else:
+            raise ValueError("erro no argumento passado")
+
 
 
 DEFAULT_CMDS: dict = {
@@ -44,7 +84,12 @@ DEFAULT_CMDS: dict = {
     'restart': {
         'desc': "Reinicia a ferramenta",
         'usage': "restart",
-        'handler': "restart"
+        'handler': restart
+    },
+    'short': {
+        'desc': "Atalhos personalizadios",
+        'usage': "add/list/remove ex: short add",
+        'handler': lambda args: Short().dispatch(args)
     }
 }
 

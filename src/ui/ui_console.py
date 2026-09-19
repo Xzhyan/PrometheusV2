@@ -20,15 +20,15 @@ class Colors:
     SUCCESS = fg.GREEN
     ERROR = fg.RED
     WARNING = fg.YELLOW
-    INFO = fg.BLUE
+    INFO = fg.CYAN
 
 
 class Banners:
     TOOL_LOGO = f"""{Colors.TEXT_ONE}
-                               ┏┓┳┓┏┓┳┳┓┏┓┏┳┓┓┏┏┓┳┳┏┓
-                               ┃┃┣┫┃┃┃┃┃┣  ┃ ┣┫┣ ┃┃┗┓
-                               ┣┛┛┗┗┛┛ ┗┗┛ ┻ ┛┗┗┛┗┛┗┛
-                        {Colors.TEXT_TWO}Developed by {Colors.TEXT_ONE}{settings.AUTHOR} {Colors.TEXT_TWO}- version: {Colors.TEXT_ONE}{settings.VERSION}"""
+                              ┏┓┳┓┏┓┳┳┓┏┓┏┳┓┓┏┏┓┳┳┏┓
+                              ┃┃┣┫┃┃┃┃┃┣  ┃ ┣┫┣ ┃┃┗┓
+                              ┣┛┛┗┗┛┛ ┗┗┛ ┻ ┛┗┗┛┗┛┗┛
+                       {Colors.TEXT_TWO}Developed by {Colors.TEXT_ONE}{settings.AUTHOR} {Colors.TEXT_TWO}- version: {Colors.TEXT_ONE}{settings.VERSION}"""
 
 
 def alert(type_: str, text: str):

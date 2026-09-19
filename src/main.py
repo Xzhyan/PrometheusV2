@@ -33,10 +33,10 @@ class Main:
                 command = entries[0]
 
                 if command in CATEGORIES:
-                    CATEGORIES[command]['handler']()
+                    CATEGORIES[command]['handler'](entries)
 
                 elif command in DEFAULT_CMDS:
-                    DEFAULT_CMDS[command]['handler']()
+                    DEFAULT_CMDS[command]['handler'](entries)
 
                 else:
                     raise CommandNotFoundError(command)

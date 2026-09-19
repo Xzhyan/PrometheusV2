@@ -1,5 +1,9 @@
 import subprocess, sys
 
+# core
+from core import settings
+from core.constants import BAT_LAUNCHER
+
 # ui
 from ui.ui_console import Colors
 
@@ -10,13 +14,22 @@ def shell_cmd(cmd: str):
     subprocess.run(cmd, shell=True)
 
 
-def shutdown():
+def shutdown(*args):
     """Finaliza a ferramenta"""
 
     sys.exit()
 
 
-def clear():
+def restart(*args):
+    """Reinicia a ferramenta"""
+
+    cmd: str = f"start {BAT_LAUNCHER}"
+    shell_cmd(cmd)
+    shutdown()
+
+
+
+def clear(*args):
     """Limpa a tela da ferramenta"""
 
     shell_cmd('cls')
@@ -31,7 +44,8 @@ def set_title(text: str):
 def entry() -> list[str]:
     """Recebe as entradas do usuário"""
 
-    entries = input("\n > ")
+    print(f"\n{Colors.FG_ONE}┌─({Colors.TEXT_THREE}{settings.TOOL_NAME}{Colors.FG_ONE})-[]")
+    entries = input(f"{Colors.FG_ONE}└───[ {Colors.TEXT_TWO}")
 
     if not entries:
         raise ValueError("você precisa informar um comando válido!")
