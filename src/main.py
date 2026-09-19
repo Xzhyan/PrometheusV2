@@ -1,12 +1,16 @@
 
 # core
 from core import settings
+from core.exceptions import CommandNotFoundError
 
 # utils
 from utils.system import clear, set_title, entry
 
 # ui
 from ui.ui_console import alert, Banners
+
+# commands
+from commands.defaults import CATEGORIES, DEFAULT_CMDS
 
 
 class Main:
@@ -28,8 +32,17 @@ class Main:
                 entries = entry()
                 command = entries[0]
 
-                print(command)
+                if command in CATEGORIES:
+                    CATEGORIES[command]['handler']()
 
+                elif command in DEFAULT_CMDS:
+                    DEFAULT_CMDS[command]['handler']()
+
+                else:
+                    raise CommandNotFoundError(command)
+
+            except CommandNotFoundError as e:
+                alert('error', str(e))
 
             except ValueError as e:
                 alert('error', str(e))
@@ -42,3 +55,4 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         alert('info', "Finalizando...")
+

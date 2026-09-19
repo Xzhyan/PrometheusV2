@@ -14,6 +14,7 @@ class Colors:
     # text
     TEXT_ONE = fg.RED
     TEXT_TWO = fg.LIGHTWHITE_EX
+    TEXT_THREE = fg.WHITE
 
     # alerts
     SUCCESS = fg.GREEN
@@ -27,11 +28,10 @@ class Banners:
                     ┏┓┳┓┏┓┳┳┓┏┓┏┳┓┓┏┏┓┳┳┏┓
                     ┃┃┣┫┃┃┃┃┃┣  ┃ ┣┫┣ ┃┃┗┓
                     ┣┛┛┗┗┛┛ ┗┗┛ ┻ ┛┗┗┛┗┛┗┛
-            {Colors.TEXT_TWO}Developed by {Colors.TEXT_ONE}{settings.AUTHOR} {Colors.TEXT_TWO}- version: {Colors.TEXT_ONE}{settings.VERSION}
-    """
+            {Colors.TEXT_TWO}Developed by {Colors.TEXT_ONE}{settings.AUTHOR} {Colors.TEXT_TWO}- version: {Colors.TEXT_ONE}{settings.VERSION}"""
 
 
-def alert(type_, text):
+def alert(type_: str, text: str):
     """Mensagem de alerta padronizada"""
 
     types = {
