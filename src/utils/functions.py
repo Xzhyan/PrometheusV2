@@ -1,0 +1,20 @@
+import json
+from pathlib import Path
+
+
+def read_json(path: Path) -> dict:
+    """Lê um arquivo json"""
+
+    with open(path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+
+    return data
+
+
+def write_json(path: Path, data: dict):
+    """Escreve dados em um arquivo json"""
+
+    with open(path, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)
+
+

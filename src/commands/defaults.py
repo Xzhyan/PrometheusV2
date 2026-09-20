@@ -2,6 +2,10 @@
 
 # utils
 from utils.system import shutdown, clear, restart, list_commands
+from utils.functions import read_json, write_json
+
+# core
+from core.constants import SHORTS_JSON
 
 
 def show_default_cmds():
@@ -26,6 +30,8 @@ def help_menu(*args):
 
 
 class Short:
+    shorts = read_json(SHORTS_JSON)
+
     def __init__(self):
         self.SHORT_CMDS: dict = {
             'add': {
@@ -43,10 +49,13 @@ class Short:
         }
 
     def add(self):
-        print("test")
+        print(self.shorts)
 
     def list(self):
-        pass
+        for short, data in self.shorts.items():
+            print(f"short")
+            for name in data:
+                print(name)
 
     def remove(self):
         pass

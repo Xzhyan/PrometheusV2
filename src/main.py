@@ -1,6 +1,7 @@
 
 # core
 from core import settings
+from core.dependencies import check
 from core.exceptions import CommandNotFoundError
 
 # utils
@@ -22,7 +23,8 @@ class Main:
         set_title(settings.TOOL_NAME)
         print(Banners.TOOL_LOGO)
 
-        self.dispatch()
+        if check(): # verificador de dependencias
+            self.dispatch()
 
     def dispatch(self):
         """Trata os comandos"""
