@@ -14,6 +14,12 @@ def shell_cmd(cmd: str):
     subprocess.run(cmd, shell=True)
 
 
+def shell_popen(cmd: str):
+    """Executa um comando e manter a tool rodando"""
+
+    subprocess.Popen(cmd, shell=True)
+
+
 def shutdown(*args):
     """Finaliza a ferramenta"""
 
@@ -46,7 +52,6 @@ def entry() -> list[str]:
 
     print(f"\n{Colors.FG_ONE}┌─({Colors.TEXT_THREE}{settings.TOOL_NAME}{Colors.FG_ONE})-[]")
     entries = input(f"{Colors.FG_ONE}└───[ {Colors.TEXT_TWO}")
-
     if not entries:
         raise ValueError("você precisa informar um comando válido!")
 
@@ -58,7 +63,7 @@ def entry() -> list[str]:
 def list_commands(name: str, cmd_dict: dict):
     """Organiza a listagem dos comandos e exibe na tela"""
 
-    print(f"\n{Colors.FG_ONE}─────[ {Colors.TEXT_TWO}{name} {Colors.TEXT_ONE}]─────")
+    print(f"\n{Colors.FG_ONE}●─────[ {Colors.TEXT_TWO}{name} {Colors.TEXT_ONE}]─────●")
 
     for cmd, data in cmd_dict.items():
         print(f"{Colors.FG_ONE}┌─[ {Colors.SUCCESS}{cmd}")

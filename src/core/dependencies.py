@@ -1,3 +1,4 @@
+import time
 from pathlib import Path
 
 # core
@@ -17,6 +18,7 @@ def check() -> bool:
     # Garante que pasta necessarias sejam criadas se não existirem
     for dir in DIR_LIST:
         print(f"Verificando: {dir}")
+        time.sleep(0.5)
 
         dir.mkdir(exist_ok=True)
 

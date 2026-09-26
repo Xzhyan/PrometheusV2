@@ -19,26 +19,28 @@ class Main:
         self.running: bool = True # controla o loop principal
 
     def startup(self):
+        if not check():
+            raise KeyboardInterrupt
+
         clear()
         set_title(settings.TOOL_NAME)
         print(Banners.TOOL_LOGO)
 
-        if check(): # verificador de dependencias
-            self.dispatch()
+        self.dispatch()
 
     def dispatch(self):
         """Trata os comandos"""
 
         while self.running:
             try:
-                entries = entry()
-                command = entries[0]
+                args = entry()
+                command = args[0]
 
                 if command in CATEGORIES:
-                    CATEGORIES[command]['handler'](entries)
+                    CATEGORIES[command]['handler'](args)
 
                 elif command in DEFAULT_CMDS:
-                    DEFAULT_CMDS[command]['handler'](entries)
+                    DEFAULT_CMDS[command]['handler'](args)
 
                 else:
                     raise CommandNotFoundError(command)

@@ -1,4 +1,9 @@
 {
-    "app": {},
-    "dir": {}
+    "app": {
+        "name": "name"
+    },
+    "dir": {
+        "prometheus": "C:\\Core\\Workspace\\codes\\PrometheusV2",
+        "saggr": "C:\\Core\\Workspace\\webdev\\SAG_GR"
+    }
 }
