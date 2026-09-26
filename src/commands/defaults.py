@@ -62,7 +62,7 @@ class Open:
         }
 
     def help(self):
-        pass
+        list_commands("open", self.SUBCOMMANDS)
 
     def code(self, path: Path):
         try:
@@ -72,13 +72,21 @@ class Open:
             alert('error', str(e))
 
     def explorer(self, path: Path):
-        pass
+        try:
+            shell_popen(f"explorer {path}")
+
+        except Exception as e:
+            alert('error', str(e))
 
     def app(self, path: Path):
-        pass
+        try:
+            shell_popen(f"start {path}")
+
+        except Exception as e:
+            alert('error', str(e))
 
     def dispatch(self, args: list[str]):
-        if len(args) <= 2:
+        if len(args) < 2:
             raise ValueError("argumento faltando, tente: open help")
 
         cmd = args[1]
@@ -143,6 +151,9 @@ class Short:
 
         self.types = ['app', 'dir']
 
+    def help(self):
+        list_commands("short", self.SUBCOMMANDS)
+
     def add(self):
         while True:
             type_ = input(f"     {Colors.FG_ONE}●▸ {Colors.TEXT_TWO}tipo do atalho (app/dir): ")
@@ -198,9 +209,6 @@ class Short:
                 return
 
         raise ValueError("o atalho não existe ou já foi removido!")
-
-    def help(self):
-        list_commands("short", self.SUBCOMMANDS)
 
     def dispatch(self, args: list[str]):
         if len(args) <= 1:

@@ -1,9 +1,8 @@
 {
-    "app": {
-        "name": "name"
-    },
+    "app": {},
     "dir": {
         "prometheus": "C:\\Core\\Workspace\\codes\\PrometheusV2",
-        "saggr": "C:\\Core\\Workspace\\webdev\\SAG_GR"
+        "saggr": "C:\\Core\\Workspace\\webdev\\SAG_GR",
+        "pythonia": "C:\\Core\\Workspace\\codes\\PythonAI"
     }
 }
