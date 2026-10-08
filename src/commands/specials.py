@@ -45,7 +45,7 @@ class Open:
 
     def code(self, path: Path):
         try:
-            shell_popen(f"code {path}")
+            shell_popen(f"code --reuse-window {path}")
 
         except Exception as e:
             alert('error', str(e))

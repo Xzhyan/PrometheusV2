@@ -11,7 +11,7 @@ from utils.system import clear, set_title, entry
 from ui.ui_console import alert, Banners
 
 # commands
-from commands.defaults import CATEGORIES, DEFAULT_CMDS
+from commands.defaults import CATEGORIES, DEFAULT_CMDS, SPECIAL_CMDS
 
 
 class Main:
@@ -41,6 +41,9 @@ class Main:
 
                 elif command in DEFAULT_CMDS:
                     DEFAULT_CMDS[command]['handler'](args)
+
+                elif command in SPECIAL_CMDS:
+                    SPECIAL_CMDS[command]['handler'](args)
 
                 else:
                     raise CommandNotFoundError(command)
