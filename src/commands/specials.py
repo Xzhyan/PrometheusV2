@@ -4,7 +4,7 @@ from pathlib import Path
 from core.constants import SHORTS_JSON
 
 # utils
-from utils.system import shell_popen, list_commands
+from utils.system import shell_popen, list_commands, shell_cmd
 from utils.functions import read_json, write_json
 
 # ui
@@ -45,7 +45,7 @@ class Open:
 
     def code(self, path: Path):
         try:
-            shell_popen(f"code --reuse-window {path}")
+            shell_cmd(f"code --new-window {path}")
 
         except Exception as e:
             alert('error', str(e))
