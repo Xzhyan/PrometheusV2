@@ -20,7 +20,7 @@ class Colors:
     SUCCESS = fg.GREEN
     ERROR = fg.RED
     WARNING = fg.YELLOW
-    INFO = fg.CYAN
+    INFO = fg.LIGHTBLUE_EX
 
 
 class Banners:
@@ -31,7 +31,7 @@ class Banners:
                        {Colors.TEXT_TWO}Developed by {Colors.TEXT_ONE}{settings.AUTHOR} {Colors.TEXT_TWO}- version: {Colors.TEXT_ONE}{settings.VERSION}"""
 
 
-def alert(type_: str, text: str):
+def alert(type_: str, text: str, line_break: bool | None = False):
     """Mensagem de alerta padronizada"""
 
     types = {
@@ -43,4 +43,7 @@ def alert(type_: str, text: str):
 
     FG_ALERT = types.get(type_.lower(), Colors.TEXT_TWO)
 
-    print(f"\n{FG_ALERT}[{type_.upper()}] {Colors.TEXT_TWO}{text}")
+    if line_break: # simula uma quebra de linha
+        print()
+        
+    print(f"{FG_ALERT}[{type_.upper()}] {Colors.TEXT_TWO}{text}")

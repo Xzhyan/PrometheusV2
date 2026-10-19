@@ -15,6 +15,4 @@ def write_json(path: Path, data: dict):
     """Escreve dados em um arquivo json"""
 
     with open(path, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4)
-
-
+        json.dump(data, file, indent=4, ensure_ascii=False)

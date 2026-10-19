@@ -43,6 +43,7 @@ A ferramenta está em estajo inicial de desenvolvimento mais já conta com uma b
  - Verificação de trafego de rede
 
 2. Diversos
+ - Limpeza de arquivos temporários
  - EasySharing (Drive local ftp)
  - Troca de mensagem criptografada
 
