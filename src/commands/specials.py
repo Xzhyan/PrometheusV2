@@ -45,7 +45,8 @@ class Open:
 
     def code(self, path: Path):
         try:
-            shell_cmd(f"code --new-window {path}")
+            # shell_cmd(f"code --new-window {path}")
+            shell_popen(f'code "" "{path}"')
 
         except Exception as e:
             alert('error', str(e))

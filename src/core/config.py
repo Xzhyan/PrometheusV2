@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     TOOL_NAME: str = "Prometheus"
     VERSION: str = "2.0"
 
-    AUTHOR: str = "Nxtvsdev"
+    AUTHOR: str = "Zyandev"
     TEAM: str = "Bravo Dynamics"
 
     # # mais tarde configuro o .env

@@ -1,20 +1,49 @@
-# Prometheus v2
+# Prometheus
 
-> Ferramenta de interface CLI desenvolvida usando Python e com total foco em sistemas Windows
+> Prometheus é uma ferramenta com interface CLI desenvolvida em python e com foco no sistema operacional Windows.
+> O principal objetivo da ferramenta é auxiliar o usuário, automatizando tarefas repetitivas e oferecendo funcionalidades que contribuam para melhorar a experiência de uso diário e a produtividade.
 
-> **Objetivo:** A ideia por trás da ferramenta é auxiliar o usuário em seu local de trabalho automatizando tarefas, disponibilizando funções úteis de forma que o fluxo de trabalho e a produtividade do usuário vão aumentar.
+## Sumário
+ - [Sobre o projeto](#sobre)
+ - [Desenvolvimento](#desenvolvimento)
+ - [Funcionalidades](#funcionalidades)
+ - [Instalação](#instalação)
+ - [Uso](#uso)
+ - [Licença](#Licença)
 
----
+## Sobre
+Aqui estão algumas informações básicas sobre o projeto.
 
-## EM DESENVOLVIMENTO
+### Informações básicas
+ - Autor: Xzhyan
+ - Nome: Prometheus
+ - Versão: 2.0
+ - Interface: Linha de comando
+ - Linguagem: Python
 
----
+### Objetivo
+Como mencionado anteriormente, o foco principal da ferramenta é auxiliar o usuário em sua vida diária, automatizando tarefas e, como resultado, melhorando a produtividade.
 
-A ferramenta acaba de entrar nas fases iniciais de desenvolvimento; apesar de ser a versão 2 de uma ferramenta mais antiga, ela contará com uma nova estrutura.
+### Visão de futuro
+Alcancar o alge da ferramenta com diversas funções que realmente resultam em melhorias para o uso.
 
-![prometheus](assets/img1.png)
+## Desenvolvimento
+A ferramenta está em estajo inicial de desenvolvimento mais já conta com uma boa base estruturada, sendo desenvolvida em Python e usando diversas bibliotecas como subprocess, os, pathlib, json, colorama e entre outras.
 
-![prometheus](assets/img2.png)
+## Ideias para a ferramenta
 
+1. Self-defense (auto-defesa)
+ - Url/Link checker
+ - Email checker, pwned)
+ - VPN
+ - Confre de senhas
+ - Confre de senha da propria ferramenta
+ - Gerador de senha aleatória
+ - Verificação de processos seguros
+ - Verificação de trafego de rede
 
-Copyright 2026 - Prometheus, Nxtvsdev
+2. Diversos
+ - EasySharing (Drive local ftp)
+ - Troca de mensagem criptografada
+
+Copyright 2026 - Prometheus, Xzhyan
