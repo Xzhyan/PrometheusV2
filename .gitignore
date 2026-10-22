@@ -2,7 +2,9 @@
 # PROJECT IGNORES
 # =================================
 
-
+# Data
+shorts.json
+urls.json
 
 # =================================
 # PYTHON IGNORES
