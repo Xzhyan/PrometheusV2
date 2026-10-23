@@ -3,6 +3,8 @@ from utils.system import shutdown, clear, restart, list_commands
 
 # commands
 from .specials import SPECIAL_CMDS
+from .self_defense import SELF_DEFENSE
+
 
 def show_default_cmds(*args):
     """Exibe os comandos normais"""
@@ -16,6 +18,12 @@ def show_special_cmds(*args):
     list_commands("Comandos Especiais", SPECIAL_CMDS)
 
 
+def show_self_defense_cmds(*args):
+    """Exibe os comandos de self-defense"""
+
+    list_commands("Auto Defesa", SELF_DEFENSE)
+
+
 CATEGORIES: dict = {
     'defaults': {
         'desc': "Exibe a lista de comandos normais",
@@ -26,6 +34,11 @@ CATEGORIES: dict = {
         'desc': "Exibe a lista de comandos especiais",
         'usage': "specials",
         'handler': show_special_cmds
+    },
+    'self-defense': {
+        'desc': "Comandos de auto defesa",
+        'usage': "self-defense",
+        'handler': show_self_defense_cmds
     }
 }
 

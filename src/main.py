@@ -11,7 +11,13 @@ from utils.system import clear, set_title, entry
 from ui.ui_console import alert, Banners
 
 # commands
-from commands.defaults import CATEGORIES, DEFAULT_CMDS, SPECIAL_CMDS
+from commands.defaults import (
+    CATEGORIES,
+    DEFAULT_CMDS,
+    SPECIAL_CMDS,
+    SELF_DEFENSE,
+)
+from commands.self_defense import open_browser_url, ALL_URLS
 
 
 class Main:
@@ -44,6 +50,12 @@ class Main:
 
                 elif command in SPECIAL_CMDS:
                     SPECIAL_CMDS[command]['handler'](args)
+
+                elif command in SELF_DEFENSE:
+                    SELF_DEFENSE[command]['handler'](args)
+
+                elif command in ALL_URLS:
+                    open_browser_url(ALL_URLS[command]['handler'])
 
                 else:
                     raise CommandNotFoundError(command)
